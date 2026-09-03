@@ -1,0 +1,195 @@
+{
+  "package": "tscp-canonicalization-conformance-suite",
+  "manifest_version": "1.1 (proposed candidate)",
+  "provenance": {
+    "status": "REFERENCE-GENERATED",
+    "chain": "specification -> vector -> independent implementation -> verification result",
+    "anti_chain": "python implementation -> generated vectors -> 'therefore correct' (NOT a valid inference; these vectors do not certify the reference)",
+    "generated_by": "tscp_canonicalizer.py (reference implementation, executable specification)",
+    "generated_at": "2026-09-03",
+    "verification": "PENDING — these vectors become cross-implementation conformance evidence only when an independent implementation (e.g., Rust firewall) reproduces every expected_canonical_bytes and expected_hash exactly",
+    "authority_note": "the specification is the authority; this implementation is an executable specification; these vectors are its observations"
+  },
+  "vectors": [
+    {
+      "id": "CM-V01",
+      "finding": "F-CM-009",
+      "description": "Finset dedup + sort (manifest §2.2 example)",
+      "type": "positive",
+      "input": [
+        "PlaneViolation",
+        "TypeMismatch",
+        "PlaneViolation"
+      ],
+      "expected_canonical_bytes_hex": "5b22506c616e6556696f6c6174696f6e222c22547970654d69736d61746368222c22506c616e6556696f6c6174696f6e225d",
+      "expected_hash": "e61cfa015a9045dcf5303a9dc8004663ae0ddc78a5176e12c04609269d658817",
+      "expected_canonical_json": "[\"PlaneViolation\",\"TypeMismatch\",\"PlaneViolation\"]"
+    },
+    {
+      "id": "CM-V02",
+      "finding": "F-CM-005",
+      "description": "NFC value: combining accent precomposed",
+      "type": "positive",
+      "input": {
+        "payload": "café"
+      },
+      "expected_canonical_bytes_hex": "7b227061796c6f6164223a22636166c3a9227d",
+      "expected_hash": "3e29815840a779187f1b7a2a814257810e9d931d90bdc211dca2fcad7fe6b1cc",
+      "expected_canonical_json": "{\"payload\":\"café\"}"
+    },
+    {
+      "id": "CM-V03",
+      "finding": "F-CM-001",
+      "description": "Astral key sorts BEFORE U+FFFF under UTF-16 code units",
+      "type": "positive",
+      "input": {
+        "😀": 1,
+        "￿": 2
+      },
+      "expected_canonical_bytes_hex": "7b22f09f9880223a312c22efbfbf223a327d",
+      "expected_hash": "c6b1b96b618d8be475f379fe69c6646b44d7a5d3c01630c43509562f09d1024b",
+      "expected_canonical_json": "{\"😀\":1,\"￿\":2}"
+    },
+    {
+      "id": "CM-V04",
+      "finding": "F-CM-005",
+      "description": "NFD key and NFC key produce IDENTICAL canonical bytes",
+      "type": "positive",
+      "input": {
+        "café": 1
+      },
+      "expected_canonical_bytes_hex": "7b22636166c3a9223a317d",
+      "expected_hash": "4ba6f859a6604763e30e1afc74dd00bf3b245be58d902b5d1ae0eaa119e8a141",
+      "expected_canonical_json": "{\"café\":1}"
+    },
+    {
+      "id": "CM-V05",
+      "finding": "F-CM-005",
+      "description": "NFC precomposed key (pair of CM-V04)",
+      "type": "positive",
+      "input": {
+        "café": 1
+      },
+      "expected_canonical_bytes_hex": "7b22636166c3a9223a317d",
+      "expected_hash": "4ba6f859a6604763e30e1afc74dd00bf3b245be58d902b5d1ae0eaa119e8a141",
+      "expected_canonical_json": "{\"café\":1}"
+    },
+    {
+      "id": "CM-V06",
+      "finding": "F-CM-002",
+      "description": "Safe integers (I-JSON range) serialize exactly",
+      "type": "positive",
+      "input": {
+        "counter": 9007199254740991,
+        "neg": -9007199254740991
+      },
+      "expected_canonical_bytes_hex": "7b22636f756e746572223a393030373139393235343734303939312c226e6567223a2d393030373139393235343734303939317d",
+      "expected_hash": "8cb8c78141f1c58d9c5a7d2b9990c214b13ff7c755d059cfc331d964afeb3454",
+      "expected_canonical_json": "{\"counter\":9007199254740991,\"neg\":-9007199254740991}"
+    },
+    {
+      "id": "CM-V07",
+      "finding": "F-CM-002",
+      "description": "Goldilocks prime as string (Rule N-2)",
+      "type": "positive",
+      "input": {
+        "field_element": "0xffffffff00000001"
+      },
+      "expected_canonical_bytes_hex": "7b226669656c645f656c656d656e74223a22307866666666666666663030303030303031227d",
+      "expected_hash": "e9dbf95d2a02ed0a75ea75910fbe26c5c1d90b3fdb42537d8c1cf4c25e9e18c2",
+      "expected_canonical_json": "{\"field_element\":\"0xffffffff00000001\"}"
+    },
+    {
+      "id": "CM-V08",
+      "finding": "F-CM-002",
+      "description": "Raw Goldilocks prime as JSON number raises DomainViolation",
+      "type": "domain-rejection",
+      "input_repr": "{'field_element': 18446744069414584321}",
+      "expected": "DomainViolation"
+    },
+    {
+      "id": "CM-V09",
+      "finding": "F-CM-002",
+      "description": "Float value raises DomainViolation",
+      "type": "domain-rejection",
+      "input_repr": "{'ratio': 0.5}",
+      "expected": "DomainViolation"
+    },
+    {
+      "id": "CM-V10",
+      "finding": "F-CM-003",
+      "description": "Objects differing only in id/canonical_hash/manifest_version hash identically once excluded (projection strips them)",
+      "type": "positive",
+      "input": {
+        "claim": "Fibonacci terminal 294373",
+        "batch": 1
+      },
+      "expected_canonical_bytes_hex": "7b226261746368223a312c22636c61696d223a224669626f6e61636369207465726d696e616c20323934333733227d",
+      "expected_hash": "f1110086590ba87bab878d64e8eb477e1649eba134e9eb40d7a2b37d74cf3e83",
+      "expected_canonical_json": "{\"batch\":1,\"claim\":\"Fibonacci terminal 294373\"}"
+    },
+    {
+      "id": "CM-V11",
+      "finding": "F-CM-003/F-CM-004",
+      "description": "Receipt content excluding signature — identity is content",
+      "type": "positive",
+      "input": {
+        "claim": "TSCP-ANCHOR-01",
+        "timestamp": 1785700000,
+        "subject": "artifact-A"
+      },
+      "expected_canonical_bytes_hex": "7b22636c61696d223a22545343502d414e43484f522d3031222c227375626a656374223a2261727469666163742d41222c2274696d657374616d70223a313738353730303030307d",
+      "expected_hash": "87e18795334643d3f88346d8b5fbcea6cc8625ffb69412729c1a3a8b1fdb22ee",
+      "expected_canonical_json": "{\"claim\":\"TSCP-ANCHOR-01\",\"subject\":\"artifact-A\",\"timestamp\":1785700000}"
+    },
+    {
+      "id": "CM-V12",
+      "finding": "—",
+      "description": "Nested object, recursive UTF-16 key sort",
+      "type": "positive",
+      "input": {
+        "zebra": {
+          "😀": 1,
+          "￿": 0
+        },
+        "apple": [
+          1,
+          2,
+          3
+        ],
+        "mango": true
+      },
+      "expected_canonical_bytes_hex": "7b226170706c65223a5b312c322c335d2c226d616e676f223a747275652c227a65627261223a7b22f09f9880223a312c22efbfbf223a307d7d",
+      "expected_hash": "682712c2fe7f45573e263f200f55a379444a91ce016bcd35f60abcc1a768dace",
+      "expected_canonical_json": "{\"apple\":[1,2,3],\"mango\":true,\"zebra\":{\"😀\":1,\"￿\":0}}"
+    },
+    {
+      "id": "CM-V13",
+      "finding": "—",
+      "description": "Empty object, empty array, null, booleans",
+      "type": "positive",
+      "input": {
+        "a": {},
+        "b": [],
+        "c": null,
+        "d": false,
+        "e": true
+      },
+      "expected_canonical_bytes_hex": "7b2261223a7b7d2c2262223a5b5d2c2263223a6e756c6c2c2264223a66616c73652c2265223a747275657d",
+      "expected_hash": "ec007d71478451c90c7e32a427b65e92eb6f0f9ee3deae8ffe4767889643b6ca",
+      "expected_canonical_json": "{\"a\":{},\"b\":[],\"c\":null,\"d\":false,\"e\":true}"
+    },
+    {
+      "id": "CM-V14",
+      "finding": "—",
+      "description": "Control chars escaped, lowercase hex",
+      "type": "positive",
+      "input": {
+        "cmd": "line1\nline2\tend\u0007"
+      },
+      "expected_canonical_bytes_hex": "7b22636d64223a226c696e65315c6e6c696e65325c74656e645c7530303037227d",
+      "expected_hash": "0a448de8c155201629c20fd5efd2ebbd4e5ac7845745fce2544b9b47ff2dc229",
+      "expected_canonical_json": "{\"cmd\":\"line1\\nline2\\tend\\u0007\"}"
+    }
+  ]
+}
