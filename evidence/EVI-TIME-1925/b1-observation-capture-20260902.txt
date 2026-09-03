@@ -1,0 +1,75 @@
+================================================================================
+RAW OBSERVATION CAPTURE — NOT A B3 PRESERVED EXCERPT
+================================================================================
+Evidence object : EVI-TIME-1925
+Capture type   : Live web page text extraction (mechanical browser capture)
+Source URL     : https://time.com/archive/6653132/religion-zion/
+Access method  : Browser automation session (Browserbase, Chrome)
+                 NOTE: direct HTTP fetch returned 406 Not Acceptable (bot
+                 detection); a real browser session was required.
+Access date    : 2026-09-02 (America/Los_Angeles)
+Authority note : This is a capture of the TIME archive web page as served on
+                 the access date. It is NOT a verified transcription of the
+                 1925 print original. Observed OCR artifacts ("lias" for
+                 "has", "Balfpur" for "Balfour") indicate the text layer is
+                 OCR-derived. Original-print fidelity: UNESTABLISHED.
+Status under spec: Observation input for B1. Does not advance the evidence
+                 object past IDENTIFIED. B2/B3 (text acquisition and verbatim
+                 preservation) are separate, later steps.
+================================================================================
+
+[PAGE RENDERED TEXT — BEGIN]
+
+U.S.
+Religion: Zion
+ADD TIME ON GOOGLE
+by
+TIME
+FEB 23, 1925 12:00 AM
+
+Dr. Chaim Weizmann, President of the World Zionist Organization, debarked in
+Manhattan to spend three weeks in raising more money for the Zionist movement,
+the back-to-Palestine movement of the Jews.
+
+In the last four years, the Palestine Foundation Fund lias collected $7,204,439
+to finance the movement, of which 60% has come from America. True, the Jews of
+America are the richest Jews in the world, but the Jews of America are far
+from united in support of the Zionist cause. Henry Morgenthau, former
+ambassador to Turkey, is a direct opponent. Other prominent Jews, such as
+Justice Louis D. Brandeis and Rabbi Stephen S. Wise, while favorable to the
+movement, have not approved of the policy of the Foundation Fund, believing
+that the movement should be financed by private initiative rather than by the
+Fund's communal methods.
+
+But Dr. Weizmann came full of enthusiasm, rendering an optimistic account of
+developments in Palestine:
+
+Education: "In addition to the modern grade and high schools, a technical
+school has been opened at Haifa; and the entire system is about to be crowned
+with the Hebrew University* on Mount Skopos, near the Mount of Olives."
+
+Music: "Apart from reading, the population relies chiefly upon sports and
+music for recreation. By music I mean serious music. We even have the
+beginnings of opera. The performances are out of doors. Almost the Imperial
+Opera in Petrograd are now in Palestine."
+
+Movies: "You can't feed the population of Palestine on movies. The people are
+too fastidious."
+
+Books: "The one thing you will find in every community, no matter how small or
+how new, is a library containing the leading periodicals from various parts of
+the world, and good books."
+
+*Dr. Weizmann goes presently to England and will accompany Lord Balfpur to
+Palestine to open this university in April.
+
+[PAGE RENDERED TEXT — END]
+
+================================================================================
+ADDITIONAL PAGE FURNITURE CAPTURED (not article content):
+- Page footer: "© 2026 TIME USA, LLC. All Rights Reserved."
+- Promotional banner: "Introducing the 2026 TIME Trailblazers"
+- Site chrome: TIME Vault navigation, section menus.
+- Screenshot also captured (top of page: red TIME banner, "U.S." badge,
+  title "Religion: Zion", "ADD TIME ON GOOGLE" button, "by TIME" byline).
+================================================================================
