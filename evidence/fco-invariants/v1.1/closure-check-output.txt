@@ -1,0 +1,38 @@
+'TSCP.CustodyPlane.custody_receipt_no_authority_path' does not depend on any axioms
+'TSCP.CustodyPlane.custody_no_authority' does not depend on any axioms
+'TSCP.CustodyPlane.evidence_no_authority' does not depend on any axioms
+'TSCP.CustodyPlane.receipt_no_authority' does not depend on any axioms
+'TSCP.CustodyPlane.custody_plane_separation' does not depend on any axioms
+'TSCP.CustodyPlane.no_plane_crossing' does not depend on any axioms
+'TSCP.CustodyPlane.receipt_in_custody_plane' does not depend on any axioms
+'TSCP.CustodyPlane.receipt_not_in_authority_plane' does not depend on any axioms
+'TSCP.CustodyPlane.harness_is_evidence_generator' does not depend on any axioms
+'TSCP.CustodyPlane.authority_reaches_evidence' does not depend on any axioms
+'TSCP.CustodyPlane.authority_reaches_receipt' does not depend on any axioms
+'TSCP.CustodyPlane.execution_reaches_receipt' does not depend on any axioms
+'TSCP.CustodyPlane.authority_reach_into_custody_plane' does not depend on any axioms
+"Custody->Custody: true"
+"Custody->Evidence: true"
+"Custody->AcceptanceReceipt: true"
+"Custody->Authority: false"
+"Custody->Execution: false"
+"Evidence->Custody: false"
+"Evidence->Evidence: true"
+"Evidence->AcceptanceReceipt: true"
+"Evidence->Authority: false"
+"Evidence->Execution: false"
+"AcceptanceReceipt->Custody: false"
+"AcceptanceReceipt->Evidence: true"
+"AcceptanceReceipt->AcceptanceReceipt: true"
+"AcceptanceReceipt->Authority: false"
+"AcceptanceReceipt->Execution: false"
+"Authority->Custody: false"
+"Authority->Evidence: true"
+"Authority->AcceptanceReceipt: true"
+"Authority->Authority: true"
+"Authority->Execution: true"
+"Execution->Custody: false"
+"Execution->Evidence: true"
+"Execution->AcceptanceReceipt: true"
+"Execution->Authority: false"
+"Execution->Execution: true"
